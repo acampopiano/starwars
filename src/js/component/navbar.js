@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import starwarsImage from "../../img/starwars.jpg";
+import starwarsImage from "../../img/starwars.png";
 export const Navbar = () => {
 	return (
 		<div className="container-fluid p-0">
-			<nav className="navbar navbar-expand-lg navbar-dark bg-dark px-5">
+			<nav className="navbar navbar-expand-lg navbar-light bg-light px-5">
 				<div className="container">
 					<Link to="/">
 						<span className="navbar-brand">
@@ -12,11 +12,17 @@ export const Navbar = () => {
 						</span>
 					</Link>
 					<div className="ml-auto">
-						<Link to="/favorites">
-							<button className="btn btn-primary">
+						<div className="btn-group">
+							<button
+								type="button"
+								className="btn btn-primary dropdown-toggle"
+								data-toggle="dropdown"
+								aria-haspopup="true"
+								aria-expanded="false">
 								Favorites <span className="badge badge-light">{0}</span>
 							</button>
-						</Link>
+							<div className="dropdown-menu" />
+						</div>
 					</div>
 				</div>
 			</nav>
