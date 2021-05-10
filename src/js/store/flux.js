@@ -32,7 +32,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					try {
 						const response = await fetch(baseURL + "vehicles");
 						const responseJson = await response.json();
-						setStore({ vehicles: responseJson });
+						setStore({ vehicles: responseJson.results });
 					} catch (e) {
 						console.error(e);
 					}
@@ -41,7 +41,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					try {
 						const response = await fetch(baseURL + "people");
 						const responseJson = await response.json();
-						setStore({ characters: responseJson });
+						setStore({ characters: responseJson.results });
 					} catch (e) {
 						console.error(e);
 					}
@@ -50,7 +50,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					try {
 						const response = await fetch(baseURL + "planets");
 						const responseJson = await response.json();
-						setStore({ planets: responseJson });
+						setStore({ planets: responseJson.results });
 					} catch (e) {
 						console.error(e);
 					}
