@@ -13,6 +13,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
+			vehicles: [],
 			characters: [],
 			planets: [],
 			favorites: []
@@ -27,13 +28,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 					fetch().then().then(data => setStore({ "foo": data.bar }))
                 */
 				const baseURL = "https://www.swapi.tech/api/";
+				const fetchVehiclesData = async () => {
+					try {
+						const response = await fetch(baseURL + "vehicles");
+						const responseJson = await response.json();
+						setStore({ vehicles: responseJson });
+					} catch (e) {
+						console.error(e);
+					}
+				};
 				const fetchCharactersData = async () => {
 					try {
 						const response = await fetch(baseURL + "people");
 						const responseJson = await response.json();
 						setStore({ characters: responseJson });
 					} catch (e) {
-						//console.error(e);
+						console.error(e);
 					}
 				};
 				const fetchPlanetsData = async () => {
@@ -42,9 +52,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 						const responseJson = await response.json();
 						setStore({ planets: responseJson });
 					} catch (e) {
-						//console.error(e);
+						console.error(e);
 					}
 				};
+				fetchVehiclesData();
 				fetchCharactersData();
 				fetchPlanetsData();
 			},
@@ -61,7 +72,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
-			}
+			},
+			addToFavorites: () => {}
 		}
 	};
 };
