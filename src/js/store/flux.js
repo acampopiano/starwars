@@ -74,9 +74,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ demo: demo });
 			},
 			addToFavorites: (index, name) => {
-				const store = getStore;
-				let newItem = {};
-				const favorites = store.favorites.filter(elem => elem.name);
+				const store = getStore();
+				let newFavoriteItem = {
+					uid: index,
+					name: name
+				};
+				const newFavoriteItemList = [...store.favorites, newFavoriteItem];
+				console.log(newFavoriteItemList);
+				setStore({ favorites: newFavoriteItemList });
 			}
 		}
 	};
