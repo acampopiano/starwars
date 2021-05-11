@@ -24,7 +24,7 @@ export const CharactersCards = () => {
 									</div>
 									<div className="card-body">
 										<h5 className="card-title">{item.name}</h5>
-										<p className="card-text">{"Lorem ipsum dolor"}</p>
+										<p className="card-text">{actions.loadCharactersDetails(item.uid)}</p>
 									</div>
 									<div className="card-footer">
 										<Link to={`/cdetails/${item.uid}`} className="btn btn-primary">

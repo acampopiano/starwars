@@ -16,8 +16,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			vehicles: [],
 			characters: [],
 			planets: [],
-			favorites: [],
-			charactersDetails: []
+			favorites: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -62,16 +61,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			loadCharactersDetails: uid => {
 				const baseURL = "https://www.swapi.tech/api/people/" + uid;
+				const charactersDetails = [];
 				const fetchCharactersDetailsData = async () => {
 					try {
 						const response = await fetch(baseURL);
 						const responseJson = await response.json();
-						setStore({ charactersDetails: responseJson.results });
+						charactersDetails = responseJson.result.properties;
 					} catch (e) {
 						console.error(e);
 					}
 				};
 				fetchCharactersDetailsData();
+				//console.log(charactersDetails);
+				return JSON.parse(charactersDetails);
 			},
 			changeColor: (index, color) => {
 				//get the store
