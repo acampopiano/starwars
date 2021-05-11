@@ -22,7 +22,15 @@ export const Cdetails = props => {
 					<div className="col-md-8">
 						<div className="card-body">
 							<h5 className="card-title">{store.characters[params.theid].name}</h5>
-							<p className="card-text">{store.characters[params.theid].url}</p>
+							<p className="card-text">
+								{actions.loadCharactersDetails(store.characters[params.theid].url)}
+
+								{
+                                    store.charactersDetails.forEach((elemento) =>{                                                                               
+                                            <span>{elemento}</span>                                        
+                                    })
+                                }
+							</p>
 							<p className="card-text">
 								<small className="text-muted">Last updated 3 mins ago</small>
 							</p>

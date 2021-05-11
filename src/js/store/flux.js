@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -16,7 +17,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			vehicles: [],
 			characters: [],
 			planets: [],
-			favorites: []
+			favorites: [],
+			charactersDetails: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -28,7 +30,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					fetch().then().then(data => setStore({ "foo": data.bar }))
                 */
 				const baseURL = "https://www.swapi.tech/api/";
-				const fetchVehiclesData = async () => {
+				/*const fetchVehiclesData = async () => {
 					try {
 						const response = await fetch(baseURL + "vehicles");
 						const responseJson = await response.json();
@@ -36,7 +38,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					} catch (e) {
 						console.error(e);
 					}
-				};
+				};*/
 				const fetchCharactersData = async () => {
 					try {
 						const response = await fetch(baseURL + "people");
@@ -46,7 +48,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.error(e);
 					}
 				};
-				const fetchPlanetsData = async () => {
+				/*const fetchPlanetsData = async () => {
 					try {
 						const response = await fetch(baseURL + "planets");
 						const responseJson = await response.json();
@@ -54,33 +56,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 					} catch (e) {
 						console.error(e);
 					}
-				};
-				fetchVehiclesData();
+				};*/
+				//fetchVehiclesData();
 				fetchCharactersData();
-				fetchPlanetsData();
+				//fetchPlanetsData();
 			},
-			loadCharactersDetails: uid => {
-				const baseURL = "https://www.swapi.tech/api/people/" + uid;
-				let charactersDetails = {};
+			loadCharactersDetails: url => {
+				const store = getStore();
+				useEffect(() => {
+					const fetchCharactersDetailsData = async () => {
+						try {
+							const response = await fetch(url);
+							const responseJson = await response.json();
+							setStore({ charactersDetails: responseJson.result.properties });
+.properties						} catch (e) {
+							console.error(e);
+						}
+					};
+					fetchCharactersDetailsData();
+				}, []);
 
-				/*onst fetchCharactersDetailsData = async () => {
-					try {
-						const response = await fetch(baseURL);
-						const responseJson = await response.json();
-						charactersDetails = responseJson.result.properties;
-					} catch (e) {
-						console.error(e);
-					}
-				};
-				fetchCharactersDetailsData();
-				//console.log(charactersDetails);
-                return charactersDetails;*/
-
-				fetch(baseURL)
-					.then(res => res.json()) // the .json() method parses the JSON response into a JS object literal
-					.then(data => (charactersDetails = data.result.properties));
-				return charactersDetails;
-			},
+				console.log(			},
 
 			changeColor: (index, color) => {
 				//get the store
