@@ -2,8 +2,10 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import starwarsImage from "../../img/starwars.png";
+
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
+
 	return (
 		<div className="container-fluid p-0">
 			<nav className="navbar navbar-expand-lg navbar-light bg-light px-5">
@@ -14,7 +16,7 @@ export const Navbar = () => {
 						</span>
 					</Link>
 					<div className="ml-auto">
-						<div className="dropdown">
+						<div className="btn-group">
 							<button
 								type="button"
 								className="btn btn-primary dropdown-toggle"
@@ -23,13 +25,15 @@ export const Navbar = () => {
 								aria-expanded="false">
 								Favorites <span className="badge badge-light">{store.favorites.length}</span>
 							</button>
-							<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
 								{store.favorites.map((item, index) => {
-									<a key={item.uid} className="dropdown-item" href="#">
-										{item.name}
-									</a>;
+									<li key={`${index}`}>
+										<a className="dropdown-item" href="#">
+											{item.name}
+										</a>
+									</li>;
 								})}
-							</div>
+							</ul>
 						</div>
 					</div>
 				</div>

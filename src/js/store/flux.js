@@ -80,7 +80,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					name: name
 				};
 				const newFavoriteItemList = [...store.favorites, newFavoriteItem];
-				console.log(newFavoriteItemList);
+				//console.log(newFavoriteItemList);
 				setStore({ favorites: newFavoriteItemList });
 			}
 		}
