@@ -62,21 +62,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//fetchPlanetsData();
 			},
 			loadCharactersDetails: url => {
-				const store 				useEffect(() => {
+				useEffect(() => {
 					const fetchCharactersDetailsData = async () => {
 						try {
 							const response = await fetch(url);
 							const responseJson = await response.json();
 							setStore({ charactersDetails: responseJson.result.properties });
-.properties.properties						} catch (e) {
+						} catch (e) {
 							console.error(e);
 						}
 					};
 					fetchCharactersDetailsData();
 				}, []);
-
-				console.log(			},
-
+			},
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
