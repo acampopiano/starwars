@@ -75,13 +75,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			addToFavorites: (index, name) => {
 				const store = getStore();
-				let newFavoriteItem = {
-					uid: index,
-					name: name
-				};
-				const newFavoriteItemList = [...store.favorites, newFavoriteItem];
-				//console.log(newFavoriteItemList);
-				setStore({ favorites: newFavoriteItemList });
+				const filter = store.favorites.filter(item => item.uid === index);
+				if (filter.length === 0) {
+					let newFavoriteItem = {
+						uid: index,
+						name: name
+					};
+					const newFavoriteItemList = [...store.favorites, newFavoriteItem];
+					//console.log(newFavoriteItemList);
+					setStore({ favorites: newFavoriteItemList });
+				}
 			}
 		}
 	};
