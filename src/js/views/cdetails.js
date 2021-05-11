@@ -25,11 +25,7 @@ export const Cdetails = props => {
 							<p className="card-text">
 								{actions.loadCharactersDetails(store.characters[params.theid].url)}
 
-								{
-                                    store.charactersDetails.forEach((elemento) =>{                                                                               
-                                            <span>{elemento}</span>                                        
-                                    })
-                                }
+								
 							</p>
 							<p className="card-text">
 								<small className="text-muted">Last updated 3 mins ago</small>

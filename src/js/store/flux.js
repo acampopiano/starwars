@@ -62,14 +62,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//fetchPlanetsData();
 			},
 			loadCharactersDetails: url => {
-				const store = getStore();
-				useEffect(() => {
+				const store 				useEffect(() => {
 					const fetchCharactersDetailsData = async () => {
 						try {
 							const response = await fetch(url);
 							const responseJson = await response.json();
 							setStore({ charactersDetails: responseJson.result.properties });
-.properties						} catch (e) {
+.properties.properties						} catch (e) {
 							console.error(e);
 						}
 					};
