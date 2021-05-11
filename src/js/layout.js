@@ -3,6 +3,8 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { CharactersCards } from "./views/charactersCards";
+import { Cdetails } from "./views/cdetails";
+
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -21,6 +23,9 @@ const Layout = () => {
 					<Switch>
 						<Route exact path="/">
 							<CharactersCards />
+						</Route>
+						<Route exact path="/cdetails/:theid">
+							<Cdetails />
 						</Route>
 					</Switch>
 					<Footer />

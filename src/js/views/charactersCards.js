@@ -28,7 +28,7 @@ export const CharactersCards = () => {
 										<p className="card-text">{"Lorem Ipsum dolor"}</p>
 									</div>
 									<div className="card-footer">
-										<Link to={`/cdetails/${item.uid}`} className="btn btn-primary">
+										<Link to={"/cdetails/" + index} className="btn btn-primary">
 											<span>Learn More!</span>
 										</Link>
 										<button
