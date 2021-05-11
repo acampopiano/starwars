@@ -16,7 +16,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			vehicles: [],
 			characters: [],
 			planets: [],
-			favorites: []
+			favorites: [],
+			charactersDetails: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -59,6 +60,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetchCharactersData();
 				fetchPlanetsData();
 			},
+			loadCharactersDetails: uid => {
+				const baseURL = "https://www.swapi.tech/api/people/" + uid;
+				const fetchCharactersDetailsData = async () => {
+					try {
+						const response = await fetch(baseURL);
+						const responseJson = await response.json();
+						setStore({ charactersDetails: responseJson.results });
+					} catch (e) {
+						console.error(e);
+					}
+				};
+				fetchCharactersDetailsData();
+			},
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
@@ -90,8 +104,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const store = getStore();
 				const filter = store.favorites.filter(item => item.name !== name);
 				const newFavoriteItemList = [...store.favorites, filter];
+				setStore({ favorites: newFavoriteItemList });
 			}
-setStore({ favorites: newFavoriteItemList });		}
+		}
 	};
 };
 

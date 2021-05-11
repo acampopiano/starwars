@@ -24,10 +24,10 @@ export const CharactersCards = () => {
 									</div>
 									<div className="card-body">
 										<h5 className="card-title">{item.name}</h5>
-										<p className="card-text">{""}</p>
+										<p className="card-text">{"Lorem ipsum dolor"}</p>
 									</div>
 									<div className="card-footer">
-										<Link to={`/details/${item.uid}`} className="btn btn-primary">
+										<Link to={`/cdetails/${item.uid}`} className="btn btn-primary">
 											<span>Learn More!</span>
 										</Link>
 										<button
