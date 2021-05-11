@@ -24,6 +24,9 @@ export const Cdetails = props => {
 							<h5 className="card-title">{store.characters[params.theid].name}</h5>
 							<p className="card-text">
 								{actions.loadCharactersDetails(store.characters[params.theid].url)}
+								{Object.entries(store.charactersDetails).map((item, i) => {
+									return <span key={`${i}`}>{item}</span><br/>
+								})}
 							</p>
 							<p className="card-text">
 								<small className="text-muted">Last updated 3 mins ago</small>
