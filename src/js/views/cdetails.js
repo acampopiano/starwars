@@ -21,13 +21,17 @@ export const Cdetails = props => {
 					</div>
 					<div className="col-md-8">
 						<div className="card-body">
-							<h5 className="card-title">{store.characters[params.theid].name}</h5>
-							<p className="card-text">
+							<h5 className="card-title">
+								{store.characters[params.theid].name}
 								{actions.loadCharactersDetails(store.characters[params.theid].url)}
-								{Object.entries(store.charactersDetails).map((item, i) => {
-									return <span key={`${i}`}>{item}</span><br/>
-								})}
-							</p>
+							</h5>
+							{Object.entries(store.charactersDetails).map((item, i) => {
+								return (
+									<p key={`${i}`} className="card-text">
+										{item}
+									</p>
+								);
+							})}
 							<p className="card-text">
 								<small className="text-muted">Last updated 3 mins ago</small>
 							</p>
