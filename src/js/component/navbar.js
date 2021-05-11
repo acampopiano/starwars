@@ -25,7 +25,7 @@ export const Navbar = () => {
 								aria-expanded="false">
 								Favorites <span className="badge badge-light">{store.favorites.length}</span>
 							</button>
-							<ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<ul className="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuButton">
 								{store.favorites.map((item, index) => {
 									return (
 										<li key={`${index}`}>
