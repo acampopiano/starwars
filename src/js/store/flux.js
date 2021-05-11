@@ -91,7 +91,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const filter = store.favorites.filter(item => item.name !== name);
 				const newFavoriteItemList = [...store.favorites, filter];
 			}
-		}
+setStore({ favorites: newFavoriteItemList });		}
 	};
 };
 
