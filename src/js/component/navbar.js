@@ -27,11 +27,16 @@ export const Navbar = () => {
 							</button>
 							<ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
 								{store.favorites.map((item, index) => {
-									<li key={`${index}`}>
-										<a className="dropdown-item" href="#">
-											{item.name}
-										</a>
-									</li>;
+									return (
+										<li key={`${index}`}>
+											<span
+												className="dropdown-item"
+												onClick={() => actions.delToFavorites(item.name)}>
+												{item.name}
+												<i className="fa fa-trash float-right" aria-hidden="true" />
+											</span>
+										</li>
+									);
 								})}
 							</ul>
 						</div>

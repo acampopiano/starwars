@@ -9,6 +9,7 @@ export const CharactersCards = () => {
 	const styles = {
 		maxwidth: "18rem"
 	};
+
 	return (
 		<div className="container">
 			<h2 className="text-danger">
