@@ -61,8 +61,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			loadCharactersDetails: uid => {
 				const baseURL = "https://www.swapi.tech/api/people/" + uid;
-				const charactersDetails = [];
-				const fetchCharactersDetailsData = async () => {
+				let charactersDetails = {};
+
+				/*onst fetchCharactersDetailsData = async () => {
 					try {
 						const response = await fetch(baseURL);
 						const responseJson = await response.json();
@@ -73,8 +74,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				fetchCharactersDetailsData();
 				//console.log(charactersDetails);
-				return JSON.parse(charactersDetails);
+                return charactersDetails;*/
+
+				fetch(baseURL)
+					.then(res => res.json()) // the .json() method parses the JSON response into a JS object literal
+					.then(data => (charactersDetails = data.result.properties));
+				return charactersDetails;
 			},
+
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
