@@ -2,11 +2,14 @@
     General Styles
 */
 .dropdown-menu {
-    cursor: pointer !important;
+    cursor: pointer !important;    
 }
 
 .card-img-top {
     width: 100%;
     height: 15vw;
     object-fit: cover;
+}
+a {
+    text-decoration: none !important;
 }

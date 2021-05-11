@@ -5,7 +5,10 @@ import starwarsImage from "../../img/starwars.png";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
-
+	const style = {
+		float: "left",
+		display: "flex"
+	};
 	return (
 		<div className="container-fluid p-0">
 			<nav className="navbar navbar-expand-lg navbar-light bg-light px-5">
@@ -29,12 +32,16 @@ export const Navbar = () => {
 								{store.favorites.map((item, index) => {
 									return (
 										<li key={`${index}`}>
-											<span
-												className="dropdown-item"
-												onClick={() => actions.delToFavorites(item.name)}>
-												{item.name}
-												<i className="fa fa-trash float-right" aria-hidden="true" />
-											</span>
+											<div style={style}>
+												<span className="dropdown-item">
+													<Link to={"/cdetails/" + item.uid}>{item.name}</Link>
+												</span>
+												<span
+													className="dropdown-item"
+													onClick={() => actions.delToFavorites(item.name)}>
+													<i className="fa fa-trash float-right" aria-hidden="true" />
+												</span>
+											</div>
 										</li>
 									);
 								})}

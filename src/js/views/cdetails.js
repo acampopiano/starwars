@@ -22,8 +22,8 @@ export const Cdetails = props => {
 					<div className="col-md-8">
 						<div className="card-body">
 							<h4 className="card-title">
-								{store.characters[params.theid].name}
-								{actions.loadCharactersDetails(store.characters[params.theid].url)}
+								{store.characters[params.uid].name}
+								{actions.loadCharactersDetails(store.characters[params.uid].url)}
 							</h4>
 							{Object.entries(store.charactersDetails).map(([key, value], i) => {
 								return (
