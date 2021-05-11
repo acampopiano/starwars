@@ -1,15 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-
 import { Context } from "../store/appContext";
 import CharactersImg from "../../img/characters.png";
-
 export const CharactersCards = () => {
 	const { store, actions } = useContext(Context);
 	const styles = {
 		maxwidth: "18rem"
 	};
-
 	return (
 		<div className="container">
 			<h2 className="text-danger">
