@@ -72,22 +72,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetchPlanetsDetailsData();
 				return () => console.log("loading in planetsDetails...");
 			},
-			addToFavorites: (index, name) => {
+			addToFavorites: (index, name, type) => {
 				const store = getStore();
-				const filter = store.favorites.filter(item => item.uid === index);
+				const filter = store.favorites.filter(item => item.name === name && item.type === type);
 				if (filter.length === 0) {
 					let newFavoriteItem = {
 						uid: index,
-						name: name
+						name: name,
+						type: type
 					};
 					const newFavoriteItemList = [...store.favorites, newFavoriteItem];
 					//console.log(newFavoriteItemList);
 					setStore({ favorites: newFavoriteItemList });
 				}
 			},
-			delToFavorites: name => {
+			delToFavorites: (name, type) => {
 				const store = getStore();
-				const filter = store.favorites.filter(item => item.name !== name);
+				const filter = store.favorites.filter(item => item.name !== name && item.type !== type);
 				setStore({ favorites: filter });
 			}
 		}

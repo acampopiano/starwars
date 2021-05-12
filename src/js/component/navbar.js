@@ -31,16 +31,29 @@ export const Navbar = () => {
 								{store.favorites.map((item, index) => {
 									return (
 										<li key={`${index}`}>
-											<div style={style}>
-												<span className="dropdown-item">
-													<Link to={"/cdetails/" + item.uid}>{item.name}</Link>
-												</span>
-												<span
-													className="dropdown-item"
-													onClick={() => actions.delToFavorites(item.name)}>
-													<i className="fa fa-trash float-right" aria-hidden="true" />
-												</span>
-											</div>
+											{item.type === "C" ? (
+												<div style={style}>
+													<span className="dropdown-item">
+														<Link to={"/cdetails/" + item.uid}>{item.name}</Link>
+													</span>
+													<span
+														className="dropdown-item"
+														onClick={() => actions.delToFavorites(item.name, "C")}>
+														<i className="fa fa-trash float-right" aria-hidden="true" />
+													</span>
+												</div>
+											) : (
+												<div style={style}>
+													<span className="dropdown-item">
+														<Link to={"/pdetails/" + item.uid}>{item.name}</Link>
+													</span>
+													<span
+														className="dropdown-item"
+														onClick={() => actions.delToFavorites(item.name, "P")}>
+														<i className="fa fa-trash float-right" aria-hidden="true" />
+													</span>
+												</div>
+											)}
 										</li>
 									);
 								})}
