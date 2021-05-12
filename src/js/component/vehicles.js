@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-import PlanetsImg from "../../img/planets.jpg";
-export const Planets = () => {
+import VehiclesImg from "../../img/vehicles.jpg";
+export const Vehicles = () => {
 	const { store, actions } = useContext(Context);
 	const styles = {
 		maxwidth: "18rem"
@@ -11,28 +11,28 @@ export const Planets = () => {
 		<>
 			<div className="container-fluid py-2">
 				<h2 className="text-danger">
-					<strong>Planets</strong>
+					<strong>Vehicles</strong>
 				</h2>
 				<div className="d-flex flex-row flex-nowrap overflow-auto">
-					{store.planets
-						? store.planets.map((item, index) => (
+					{store.vehicles
+						? store.vehicles.map((item, index) => (
 								<div key={`${index}`} className="col-lg-3 col-md-12 mx-auto mb-3">
 									<div className="card card-block" style={styles}>
 										<div className="card-header">
-											<img src={PlanetsImg} className="card-img-top img-fluid" alt="Imagen" />
+											<img src={VehiclesImg} className="card-img-top img-fluid" alt="Imagen" />
 										</div>
 										<div className="card-body">
 											<h5 className="card-title">{item.name}</h5>
 											<p className="card-text">{"Lorem Ipsum dolor"}</p>
 										</div>
 										<div className="card-footer">
-											<Link to={"/pdetails/" + index} className="btn btn-primary">
+											<Link to={"/vdetails/" + item.uid} className="btn btn-primary">
 												<span>Learn More!</span>
 											</Link>
 											<button
 												type="button"
 												className="btn btn-warning float-right"
-												onClick={() => actions.addToFavorites(index, item.name, "P")}>
+												onClick={() => actions.addToFavorites(item.uid, item.name, "V")}>
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
 													width="16"

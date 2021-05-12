@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { Cdetails } from "./views/cdetails";
 import { Pdetails } from "./views/pdetails";
+import { Vdetails } from "./views/vdetails";
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -28,6 +29,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/pdetails/:uid">
 							<Pdetails />
+						</Route>
+						<Route exact path="/vdetails/:uid">
+							<Vdetails />
 						</Route>
 					</Switch>
 					<Footer />

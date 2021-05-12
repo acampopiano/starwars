@@ -38,7 +38,7 @@ export const Navbar = () => {
 													</span>
 													<span
 														className="dropdown-item"
-														onClick={() => actions.delToFavorites(item.name, "C")}>
+														onClick={() => actions.delToFavorites(item.name)}>
 														<i className="fa fa-trash float-right" aria-hidden="true" />
 													</span>
 												</div>
@@ -49,7 +49,7 @@ export const Navbar = () => {
 													</span>
 													<span
 														className="dropdown-item"
-														onClick={() => actions.delToFavorites(item.name, "P")}>
+														onClick={() => actions.delToFavorites(item.name)}>
 														<i className="fa fa-trash float-right" aria-hidden="true" />
 													</span>
 												</div>

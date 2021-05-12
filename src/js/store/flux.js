@@ -7,15 +7,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			planets: [],
 			favorites: [],
 			charactersDetails: {},
-			planetsDetails: {}
+			planetsDetails: {},
+			vehiclesDetails: {}
 		},
 		actions: {
 			loadData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-                */
 				const baseURL = "https://www.swapi.tech/api/";
-				/*const fetchVehiclesData = async () => {
+				const fetchVehiclesData = async () => {
 					try {
 						const response = await fetch(baseURL + "vehicles");
 						const responseJson = await response.json();
@@ -23,7 +21,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					} catch (e) {
 						console.error(e);
 					}
-				};*/
+				};
 				const fetchCharactersData = async () => {
 					try {
 						const response = await fetch(baseURL + "people");
@@ -42,9 +40,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.error(e);
 					}
 				};
-				//fetchVehiclesData();
 				fetchCharactersData();
 				fetchPlanetsData();
+				fetchVehiclesData();
 			},
 			loadCharactersDetails: url => {
 				const fetchCharactersDetailsData = async () => {
@@ -72,6 +70,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetchPlanetsDetailsData();
 				return () => console.log("loading in planetsDetails...");
 			},
+			loadVehiclesDetails: url => {
+				const fetchVehiclesDetailsData = async () => {
+					try {
+						const response = await fetch(url);
+						const responseJson = await response.json();
+						setStore({ vehiclesDetails: responseJson.result.properties });
+					} catch (e) {
+						console.error(e);
+					}
+				};
+				fetchVehiclesDetailsData();
+				return () => console.log("loading in vehiclesDetails...");
+			},
 			addToFavorites: (index, name, type) => {
 				const store = getStore();
 				const filter = store.favorites.filter(item => item.name === name && item.type === type);
@@ -86,9 +97,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					setStore({ favorites: newFavoriteItemList });
 				}
 			},
-			delToFavorites: (name, type) => {
+			delToFavorites: name => {
 				const store = getStore();
-				const filter = store.favorites.filter(item => item.name !== name && item.type !== type);
+				const filter = store.favorites.filter(item => item.name !== name);
 				setStore({ favorites: filter });
 			}
 		}
