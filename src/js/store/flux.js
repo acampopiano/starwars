@@ -14,6 +14,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			loadData: () => {
 				const baseURL = "https://www.swapi.tech/api/";
 				const baseURLAllCharactersData = "https://akabab.github.io/starwars-api/api/all.json";
+
 				const fetchVehiclesData = async () => {
 					try {
 						const response = await fetch(baseURL + "vehicles");
@@ -146,10 +147,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 				return result;
 			},
-			findDataFromCharacters: name => {
+			findDataFromCharacters: () => {
 				const store = getStore();
-				const filter = store.allCharactersData.filter(item => item.name === name);
-				return filter;
+				$.extend(true, store.characters, store.allCharactersData);
 			}
 		}
 	};
