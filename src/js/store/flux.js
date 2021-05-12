@@ -2,18 +2,6 @@ import React, { useState, useEffect } from "react";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			],
 			vehicles: [],
 			characters: [],
 			planets: [],
@@ -21,10 +9,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			charactersDetails: {}
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
 			loadData: () => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
@@ -62,32 +46,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//fetchPlanetsData();
 			},
 			loadCharactersDetails: url => {
-				useEffect(() => {
-					const fetchCharactersDetailsData = async () => {
-						try {
-							const response = await fetch(url);
-							const responseJson = await response.json();
-							setStore({ charactersDetails: responseJson.result.properties });
-						} catch (e) {
-							console.error(e);
-						}
-					};
-					fetchCharactersDetailsData();
-				}, []);
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
+				const fetchCharactersDetailsData = async () => {
+					try {
+						const response = await fetch(url);
+						const responseJson = await response.json();
+						setStore({ charactersDetails: responseJson.result.properties });
+					} catch (e) {
+						console.error(e);
+					}
+				};
+				fetchCharactersDetailsData();
+				return () => console.log("loading in charactersDetails...");
 			},
 			addToFavorites: (index, name) => {
 				const store = getStore();

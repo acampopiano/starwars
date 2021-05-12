@@ -9,6 +9,11 @@ export const Cdetails = props => {
 	const styles = {
 		maxwidth: "540px"
 	};
+
+	useEffect(() => {
+		actions.loadCharactersDetails(store.characters[params.uid].url);
+	}, []);
+
 	return (
 		<div className="container">
 			<h2 className="text-danger">
@@ -19,12 +24,9 @@ export const Cdetails = props => {
 					<div className="col-md-4">
 						<img src={CharactersImg} alt="Characters" className="img-fluid" />
 					</div>
-					<div className="col-md-8">
+					<div className="col-md-8 card">
 						<div className="card-body">
-							<h4 className="card-title">
-								{store.characters[params.uid].name}
-								{actions.loadCharactersDetails(store.characters[params.uid].url)}
-							</h4>
+							<h4 className="card-title">{store.characters[params.uid].name}</h4>
 							{Object.entries(store.charactersDetails).map(([key, value], i) => {
 								return (
 									<p key={`${i}`} className="card-text">
