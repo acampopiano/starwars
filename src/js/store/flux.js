@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -8,11 +7,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			favorites: [],
 			charactersDetails: {},
 			planetsDetails: {},
-			vehiclesDetails: {}
+			vehiclesDetails: {},
+			allCharactersData: []
 		},
 		actions: {
 			loadData: () => {
 				const baseURL = "https://www.swapi.tech/api/";
+				const baseURLAllCharactersData = "https://akabab.github.io/starwars-api/api/all.json";
 				const fetchVehiclesData = async () => {
 					try {
 						const response = await fetch(baseURL + "vehicles");
@@ -40,9 +41,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.error(e);
 					}
 				};
+				const fetchAllCharactersData = async () => {
+					try {
+						const response = await fetch(baseURLAllCharactersData);
+						const responseJson = await response.json();
+						setStore({ allCharactersData: responseJson });
+					} catch (e) {
+						console.error(e);
+					}
+				};
 				fetchCharactersData();
 				fetchPlanetsData();
 				fetchVehiclesData();
+				fetchAllCharactersData();
 			},
 			loadCharactersDetails: url => {
 				const fetchCharactersDetailsData = async () => {
