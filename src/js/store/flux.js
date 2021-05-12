@@ -101,6 +101,39 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const store = getStore();
 				const filter = store.favorites.filter(item => item.name !== name);
 				setStore({ favorites: filter });
+			},
+			findIndexInCharacters: name => {
+				const store = getStore();
+				var result = -1;
+				store.characters.some(function(item, i) {
+					if (item.name === name) {
+						result = i;
+						return true;
+					}
+				});
+				return result;
+			},
+			findIndexInPlanets: name => {
+				const store = getStore();
+				var result = -1;
+				store.planets.some(function(item, i) {
+					if (item.name === name) {
+						result = i;
+						return true;
+					}
+				});
+				return result;
+			},
+			findIndexInVehicles: name => {
+				const store = getStore();
+				var result = -1;
+				store.vehicles.some(function(item, i) {
+					if (item.name === name) {
+						result = i;
+						return true;
+					}
+				});
+				return result;
 			}
 		}
 	};

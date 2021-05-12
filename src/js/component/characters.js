@@ -26,13 +26,15 @@ export const Characters = () => {
 											<p className="card-text">{"Lorem Ipsum dolor"}</p>
 										</div>
 										<div className="card-footer">
-											<Link to={"/cdetails/" + index} className="btn btn-primary">
+											<Link
+												to={"/cdetails/" + actions.findIndexInCharacters(item.name)}
+												className="btn btn-primary">
 												<span>Learn More!</span>
 											</Link>
 											<button
 												type="button"
 												className="btn btn-warning float-right"
-												onClick={() => actions.addToFavorites(index, item.name, "C")}>
+												onClick={() => actions.addToFavorites(item.uid, item.name, "C")}>
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
 													width="16"

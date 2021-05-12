@@ -34,7 +34,12 @@ export const Navbar = () => {
 											{item.type === "C" ? (
 												<div style={style}>
 													<span className="dropdown-item">
-														<Link to={"/cdetails/" + item.uid}>{item.name}</Link>
+														<Link
+															to={
+																"/cdetails/" + actions.findIndexInCharacters(item.name)
+															}>
+															{item.name}
+														</Link>
 													</span>
 													<span
 														className="dropdown-item"
@@ -45,7 +50,9 @@ export const Navbar = () => {
 											) : item.type === "P" ? (
 												<div style={style}>
 													<span className="dropdown-item">
-														<Link to={"/pdetails/" + item.uid}>{item.name}</Link>
+														<Link to={"/pdetails/" + actions.findIndexInPlanets(item.name)}>
+															{item.name}
+														</Link>
 													</span>
 													<span
 														className="dropdown-item"
@@ -56,7 +63,10 @@ export const Navbar = () => {
 											) : (
 												<div style={style}>
 													<span className="dropdown-item">
-														<Link to={"/vdetails/" + item.uid}>{item.name}</Link>
+														<Link
+															to={"/vdetails/" + actions.findIndexInVehicles(item.name)}>
+															{item.name}
+														</Link>
 													</span>
 													<span
 														className="dropdown-item"
