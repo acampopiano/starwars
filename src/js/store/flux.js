@@ -6,7 +6,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			characters: [],
 			planets: [],
 			favorites: [],
-			charactersDetails: {}
+			charactersDetails: {},
+			planetsDetails: {}
 		},
 		actions: {
 			loadData: () => {
@@ -32,7 +33,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.error(e);
 					}
 				};
-				/*const fetchPlanetsData = async () => {
+				const fetchPlanetsData = async () => {
 					try {
 						const response = await fetch(baseURL + "planets");
 						const responseJson = await response.json();
@@ -40,10 +41,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					} catch (e) {
 						console.error(e);
 					}
-				};*/
+				};
 				//fetchVehiclesData();
 				fetchCharactersData();
-				//fetchPlanetsData();
+				fetchPlanetsData();
 			},
 			loadCharactersDetails: url => {
 				const fetchCharactersDetailsData = async () => {
@@ -57,6 +58,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				fetchCharactersDetailsData();
 				return () => console.log("loading in charactersDetails...");
+			},
+			loadPlanetsDetails: url => {
+				const fetchPlanetsDetailsData = async () => {
+					try {
+						const response = await fetch(url);
+						const responseJson = await response.json();
+						setStore({ planetsDetails: responseJson.result.properties });
+					} catch (e) {
+						console.error(e);
+					}
+				};
+				fetchPlanetsDetailsData();
+				return () => console.log("loading in planetsDetails...");
 			},
 			addToFavorites: (index, name) => {
 				const store = getStore();

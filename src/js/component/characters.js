@@ -2,17 +2,17 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import CharactersImg from "../../img/characters.png";
-export const CharactersCards = () => {
+export const Characters = () => {
 	const { store, actions } = useContext(Context);
 	const styles = {
 		maxwidth: "18rem"
 	};
 	return (
-		<div className="container ">
-			<h2 className="text-danger">
-				<strong>Characters</strong>
-			</h2>
+		<>
 			<div className="container-fluid py-2">
+				<h2 className="text-danger">
+					<strong>Characters</strong>
+				</h2>
 				<div className="d-flex flex-row flex-nowrap overflow-auto">
 					{store.characters
 						? store.characters.map((item, index) => (
@@ -50,6 +50,6 @@ export const CharactersCards = () => {
 						: "Loading..."}
 				</div>
 			</div>
-		</div>
+		</>
 	);
 };
