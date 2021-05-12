@@ -27,7 +27,7 @@ export const Vdetails = props => {
 					<div className="col-md-8 card">
 						<div className="card-body">
 							<h4 className="card-title">{store.vehicles[params.uid].name}</h4>
-							{Object.entries(store.vechiclesDetails).map(([key, value], i) => {
+							{Object.entries(store.vehiclesDetails).map(([key, value], i) => {
 								return (
 									<p key={`${i}`} className="card-text">
 										<strong className="text-dark">{key.toUpperCase()}:</strong> {value}

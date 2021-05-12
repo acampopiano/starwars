@@ -42,10 +42,21 @@ export const Navbar = () => {
 														<i className="fa fa-trash float-right" aria-hidden="true" />
 													</span>
 												</div>
-											) : (
+											) : item.type === "P" ? (
 												<div style={style}>
 													<span className="dropdown-item">
 														<Link to={"/pdetails/" + item.uid}>{item.name}</Link>
+													</span>
+													<span
+														className="dropdown-item"
+														onClick={() => actions.delToFavorites(item.name)}>
+														<i className="fa fa-trash float-right" aria-hidden="true" />
+													</span>
+												</div>
+											) : (
+												<div style={style}>
+													<span className="dropdown-item">
+														<Link to={"/vdetails/" + item.uid}>{item.name}</Link>
 													</span>
 													<span
 														className="dropdown-item"

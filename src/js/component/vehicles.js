@@ -26,7 +26,7 @@ export const Vehicles = () => {
 											<p className="card-text">{"Lorem Ipsum dolor"}</p>
 										</div>
 										<div className="card-footer">
-											<Link to={"/vdetails/" + item.uid} className="btn btn-primary">
+											<Link to={"/vdetails/" + index} className="btn btn-primary">
 												<span>Learn More!</span>
 											</Link>
 											<button
