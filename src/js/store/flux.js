@@ -145,6 +145,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				});
 				return result;
+			},
+			findDataFromCharacters: name => {
+				const store = getStore();
+				const filter = store.allCharactersData.filter(item => item.name === name);
+				return filter;
 			}
 		}
 	};
