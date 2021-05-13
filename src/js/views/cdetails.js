@@ -22,7 +22,7 @@ export const Cdetails = props => {
 			<div className="card mb-3" style={styles}>
 				<div className="row g-0">
 					<div className="col-md-4">
-						<img src={CharactersImg} alt="Characters" className="img-fluid" />
+						<img src={store.characters[params.uid].image} alt="Characters" className="img-fluid" />
 					</div>
 					<div className="col-md-8 card">
 						<div className="card-body">

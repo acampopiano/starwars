@@ -26,6 +26,25 @@ export const Characters = () => {
 											<h5 className="card-title">{item.name}</h5>
 											<p className="card-text">
 												<strong className="text-dark">Height:</strong> {item.height}
+												<br />
+												<strong className="text-dark">Gender:</strong> {item.gender}
+												<br />
+												<strong className="text-dark">Mass:</strong> {item.mass}
+												<br />
+												<strong className="text-dark">Gender:</strong> {item.gender}
+												<br />
+												<strong className="text-dark">HomeWorld:</strong> {item.homeworld}
+												<br />
+												<strong className="text-dark">Died:</strong> {item.died}
+												<br />
+												<strong className="text-dark">Specie:</strong> {item.species}
+												<br />
+												<strong className="text-dark">Hair Color:</strong> {item.hairColor}
+												<br />
+												<strong className="text-dark">Eye Color:</strong> {item.eyeColor}
+												<br />
+												<strong className="text-dark">Skin Color:</strong> {item.skinColor}
+												<br />
 											</p>
 										</div>
 										<div className="card-footer">
